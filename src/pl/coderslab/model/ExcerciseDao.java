@@ -11,7 +11,7 @@ import pl.coderslab.utils.DbUtil;
 
 public class ExcerciseDao {
 
-	public void saveToDB(Excercise excercise) throws SQLException {
+	public static void saveToDB(Excercise excercise) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		if (excercise.getId() == 0) {
 			String sql = "INSERT INTO excercise (title, description) VALUES (?, ?);";
@@ -34,7 +34,7 @@ public class ExcerciseDao {
 		}
 	}
 
-	static public Excercise loadExcerciseById(int id) throws SQLException {
+	public static Excercise loadExcerciseById(int id) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		String sql = "SELECT * FROM excercise WHERE id=?;";
 		PreparedStatement prepStat = conn.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class ExcerciseDao {
 		return excercises;
 	}
 	
-	public void delete(Excercise excercise) throws SQLException {
+	public static void delete(Excercise excercise) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		if (excercise.getId() != 0) {
 			String sql = "DELETE FROM excercise WHERE id = ?;";

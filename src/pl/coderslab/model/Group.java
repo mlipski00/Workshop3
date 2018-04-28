@@ -1,12 +1,5 @@
 package pl.coderslab.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Group {
 
 	private int id;
@@ -35,6 +28,10 @@ public class Group {
 	@Override
 	public String toString() {
 		return "Group [id=" + id + ", name=" + name + "]";
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
