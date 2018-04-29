@@ -13,11 +13,11 @@ public class UserDao {
 
 	public static void saveToDB(User user) throws SQLException {
 		Connection conn = DbUtil.getConn();
+		PreparedStatement preparedStatement;
 		if (user.getId() == 0) {
 			String sql = "INSERT INTO Users(username, email, password) VALUES (?, ?, ?)";
 			String generatedColumns[] = { "ID" };
-			PreparedStatement preparedStatement;
-			preparedStatement = conn.prepareStatement(sql, generatedColumns);
+						preparedStatement = conn.prepareStatement(sql, generatedColumns);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getPassword());
@@ -28,14 +28,16 @@ public class UserDao {
 			}
 		} else {
 			String sql = "UPDATE Users SET username=?, email=?, password=? where id = ?";
-			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getEmail());
 			preparedStatement.setInt(4, user.getId());
 			preparedStatement.executeUpdate();
+			
 		}
+		preparedStatement.close();
+		conn.close();
 	}
 	public static User loadUserById(int id) throws SQLException {
 		Connection conn = DbUtil.getConn();
@@ -50,8 +52,11 @@ public class UserDao {
 			loadedUser.setUsername(resultSet.getString("username"));
 			loadedUser.setPassword(resultSet.getString("password"));
 			loadedUser.setEmail(resultSet.getString("email"));
+			preparedStatement.cancel();
 			return loadedUser;
 		}
+		preparedStatement.close();
+		conn.close();
 		return null;
 	}
 
@@ -70,6 +75,8 @@ public class UserDao {
 			loadedUser.setEmail(resultSet.getString("email"));
 			users.add(loadedUser);
 		}
+		preparedStatement.close();
+		conn.close();
 		return users;
 	}
 
@@ -88,6 +95,8 @@ public class UserDao {
 			loadedUser.setEmail(resultSet.getString("email"));
 			users.add(loadedUser);
 		}
+		prepStat.close();
+		conn.close();
 		return users;
 
 	}
@@ -101,6 +110,8 @@ public class UserDao {
 			preparedStatement.setInt(1, user.getId());
 			preparedStatement.executeUpdate();
 			user.setId(0);
-		}
+			preparedStatement.close();
+			conn.close();
+		} 
 	}
 }

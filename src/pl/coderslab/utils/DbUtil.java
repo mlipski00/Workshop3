@@ -1,6 +1,7 @@
 package pl.coderslab.utils;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javax.naming.Context;
@@ -12,6 +13,8 @@ public class DbUtil {
 	private static DataSource ds;
 
 	public static Connection getConn() throws SQLException {
+		//return DriverManager.getConnection("jdbc:mysql://localhost:3306/workshop2?useSSL=false", "root", "coderslab");
+		
 		return getInstance().getConnection();
 	}
 

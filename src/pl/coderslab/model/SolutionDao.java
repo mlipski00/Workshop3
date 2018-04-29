@@ -12,34 +12,38 @@ import pl.coderslab.utils.DbUtil;
 
 public class SolutionDao {
 
-	public void saveToDB() throws SQLException {
+	public void saveToDB(Solution solution) throws SQLException {
 		Connection conn = DbUtil.getConn();
-		if (this.id == 0) {
+		PreparedStatement prepStat;
+		ResultSet rs = null;
+		if (solution.getId() == 0) {
 			String sql = "INSERT INTO solution (created, updated, description, excercise_id, user_id) VALUES (?, ?, ?, ?, ?);";
 			String columnNames[] = { "ID" };
-			PreparedStatement prepStat = conn.prepareStatement(sql, columnNames);
-			prepStat.setTimestamp(1, this.created);
-			prepStat.setTimestamp(2, this.updated);
-			prepStat.setString(3, this.description);
-			prepStat.setInt(4, this.excercise_id);
-			prepStat.setInt(5, this.user_id);
+			prepStat = conn.prepareStatement(sql, columnNames);
+			prepStat.setTimestamp(1, solution.getCreated());
+			prepStat.setTimestamp(2, solution.getUpdated());
+			prepStat.setString(3, solution.getDescription());
+			prepStat.setInt(4, solution.getExcercise_id());
+			prepStat.setInt(5, solution.getUser_id());
 			prepStat.executeUpdate();
-			ResultSet rs = prepStat.getGeneratedKeys();
+			rs = prepStat.getGeneratedKeys();
 			if (rs.next()) {
-				this.id = rs.getInt(1);
+				solution.setId(rs.getInt(1));
 			}
 		} else {
 			String sql = "UPDATE solution SET updated=?, excercise_id=? WHERE id=?";
 			java.util.Date javaDate = new java.util.Date();
 			long javaTime = javaDate.getTime();
-			this.updated = new Timestamp(javaTime);
-			PreparedStatement prepStat = conn.prepareStatement(sql);
-			prepStat.setTimestamp(1, this.updated);
-			prepStat.setInt(2, this.excercise_id);
-			prepStat.setInt(3, this.id);
+			solution.setUpdated(new Timestamp(javaTime));
+			prepStat = conn.prepareStatement(sql);
+			prepStat.setTimestamp(1, solution.getUpdated());
+			prepStat.setInt(2, solution.getExcercise_id());
+			prepStat.setInt(3, solution.getId());
 			prepStat.executeUpdate();
-
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 	}
 
 
@@ -51,14 +55,17 @@ public class SolutionDao {
 		ResultSet rs = prepStat.executeQuery();
 		if (rs.next()) {
 			Solution solution = new Solution();
-			solution.id = rs.getInt(1);
-			solution.created = rs.getTimestamp(2);
-			solution.updated = rs.getTimestamp(3);
-			solution.description = rs.getString(4);
-			solution.excercise_id = rs.getInt(5);
-			solution.user_id = rs.getInt(6);
+			solution.setId(rs.getInt(1));
+			solution.setCreated(rs.getTimestamp(2));
+			solution.setUpdated(rs.getTimestamp(3));
+			solution.setDescription(rs.getString(4));
+			solution.setExcercise_id(rs.getInt(5));
+			solution.setUser_id( rs.getInt(6));
 			return solution;
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return null;
 	}
 
@@ -70,14 +77,40 @@ public class SolutionDao {
 		ResultSet rs = prepStat.executeQuery();
 		while (rs.next()) {
 			Solution solution = new Solution();
-			solution.id = rs.getInt(1);
-			solution.created = rs.getTimestamp(2);
-			solution.updated = rs.getTimestamp(3);
-			solution.description = rs.getString(4);
-			solution.excercise_id = rs.getInt(5);
-			solution.user_id = rs.getInt(6);
+			solution.setId(rs.getInt(1));
+			solution.setCreated(rs.getTimestamp(2));
+			solution.setUpdated(rs.getTimestamp(3));
+			solution.setDescription(rs.getString(4));
+			solution.setExcercise_id(rs.getInt(5));
+			solution.setUser_id( rs.getInt(6));
 			solutions.add(solution);
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
+		return solutions;
+	}
+	
+	static public List<Solution> loadAllSolutions(int rows) throws SQLException {
+		Connection conn = DbUtil.getConn();
+		String sql = "SELECT * FROM solution ORDER BY created DESC LIMIT ?";
+		ArrayList<Solution> solutions = new ArrayList<Solution>();
+		PreparedStatement prepStat = conn.prepareStatement(sql);
+		prepStat.setInt(1, rows);
+		ResultSet rs = prepStat.executeQuery();
+		while (rs.next()) {
+			Solution solution = new Solution();
+			solution.setId(rs.getInt(1));
+			solution.setCreated(rs.getTimestamp(2));
+			solution.setUpdated(rs.getTimestamp(3));
+			solution.setDescription(rs.getString(4));
+			solution.setExcercise_id(rs.getInt(5));
+			solution.setUser_id( rs.getInt(6));
+			solutions.add(solution);
+		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return solutions;
 	}
 	
@@ -90,18 +123,21 @@ public class SolutionDao {
 		ResultSet rs = prepStat.executeQuery();
 		while (rs.next()) {
 			Solution solution = new Solution();
-			solution.id = rs.getInt(1);
-			solution.created = rs.getTimestamp(2);
-			solution.updated = rs.getTimestamp(3);
-			solution.description = rs.getString(4);
-			solution.excercise_id = rs.getInt(5);
-			solution.user_id = rs.getInt(6);
+			solution.setId(rs.getInt(1));
+			solution.setCreated(rs.getTimestamp(2));
+			solution.setUpdated(rs.getTimestamp(3));
+			solution.setDescription(rs.getString(4));
+			solution.setExcercise_id(rs.getInt(5));
+			solution.setUser_id( rs.getInt(6));
 			solutions.add(solution);
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return solutions;
 	}
 	
-	static public List<Solution> loadAllByExerciseId (int id) throws SQLException {
+	public static List<Solution> loadAllByExerciseId (int id) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		ArrayList<Solution> solutions = new ArrayList<Solution>();
 		String sql = "SELECT * FROM solution WHERE excercise_id = ?";
@@ -110,25 +146,31 @@ public class SolutionDao {
 		ResultSet rs = prepStat.executeQuery();
 		while (rs.next()) {
 			Solution solution = new Solution();
-			solution.id = rs.getInt(1);
-			solution.created = rs.getTimestamp(2);
-			solution.updated = rs.getTimestamp(3);
-			solution.description = rs.getString(4);
-			solution.excercise_id = rs.getInt(5);
-			solution.user_id = rs.getInt(6);
+			solution.setId(rs.getInt(1));
+			solution.setCreated(rs.getTimestamp(2));
+			solution.setUpdated(rs.getTimestamp(3));
+			solution.setDescription(rs.getString(4));
+			solution.setExcercise_id(rs.getInt(5));
+			solution.setUser_id( rs.getInt(6));
 			solutions.add(solution);
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return solutions;
 	}
 	
 	
-	public void delete(Connection conn) throws SQLException {
-		if (this.id != 0) {
+	public void delete(Solution solution) throws SQLException {
+		Connection conn = DbUtil.getConn();
+		if (solution.getId() != 0) {
 			String sql = "DELETE FROM solution WHERE id = ?;";
 			PreparedStatement prepStat = conn.prepareStatement(sql);
-			prepStat.setInt(1, this.id);
+			prepStat.setInt(1, solution.getId());
 			prepStat.executeUpdate();
-			this.id=0;
+			solution.setId(0);
+			prepStat.close();
+			conn.close();
 		}
 	}
 	

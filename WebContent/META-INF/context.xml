@@ -6,9 +6,9 @@ type="javax.sql.DataSource"
 username="root"
 password="coderslab"
 driverClassName="com.mysql.jdbc.Driver"
-url="jdbc:mysql://localhost:3306/workshop2?useSSL=false"					
+url="jdbc:mysql://localhost:3306/workshop2"					
 connectionProperties="useUnicode=yes;characterEncoding=utf8;"
 maxActive="100"
 maxIdle="30"
-maxWait="10000" />
+maxWait="10000"/>
 </Context>

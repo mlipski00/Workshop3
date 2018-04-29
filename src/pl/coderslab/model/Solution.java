@@ -1,12 +1,7 @@
 package pl.coderslab.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Solution {
 
@@ -54,10 +49,6 @@ public class Solution {
 		this.description = description;
 	}
 
-	public int geteEcercise_id() {
-		return excercise_id;
-	}
-
 	public void setExcercise_id(int excercise_id) {
 		this.excercise_id = excercise_id;
 	}
@@ -78,5 +69,13 @@ public class Solution {
 	public String toString() {
 		return "Solution [id=" + id + ", created=" + created + ", updated=" + updated + ", description=" + description
 				+ ", excercise_id=" + excercise_id + ", user_id=" + user_id + "]\n";
+	}
+
+	public int getExcercise_id() {
+		return excercise_id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

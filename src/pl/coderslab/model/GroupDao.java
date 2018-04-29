@@ -13,23 +13,27 @@ public class GroupDao {
 
 	public static void saveToDB(Group group) throws SQLException {
 		Connection conn = DbUtil.getConn();
+		PreparedStatement prepStat;
 		if(group.getId() ==0) {
 			String sql = "INSERT INTO user_group (name) VALUES (?);";
 			String columnNames[] = { "ID" };
-			PreparedStatement prepStat = conn.prepareStatement(sql, columnNames);
+			prepStat = conn.prepareStatement(sql, columnNames);
 			prepStat.setString(1, group.getName());
 			prepStat.executeUpdate();
 			ResultSet rs = prepStat.getGeneratedKeys();
 			if (rs.next()) {
 				group.setId(rs.getInt(1));
 			}
+			rs.close();
 		}
 		else {
 			String sql = "UPDATE user_group SET name = ?;";
-			PreparedStatement prepStat = conn.prepareStatement(sql);
+			prepStat = conn.prepareStatement(sql);
 			prepStat.setString(1, group.getName());
 			prepStat.executeUpdate();
 			}
+		prepStat.close();
+		conn.close();
 	}
 
 	public static Group loadGroupById(int id) throws SQLException {
@@ -44,6 +48,9 @@ public class GroupDao {
 			group.setName(rs.getString(2));
 			return group;
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return null;
 
 	}
@@ -61,6 +68,9 @@ public class GroupDao {
 			groups.add(group);
 			
 		}
+		rs.close();
+		prepStat.close();
+		conn.close();
 		return groups;
 		
 	}
@@ -71,5 +81,7 @@ public class GroupDao {
 		prepStat.setInt(1, group.getId());
 		prepStat.executeUpdate();
 		group.setId(0);
+		prepStat.close();
+		conn.close();
 	}
-}
+	}
