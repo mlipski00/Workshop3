@@ -23,6 +23,15 @@ public class User {
 		this.username = username;
 	}
 
+	public User(int id, String username, String email, String password, int person_group_id) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.setPassword(password);
+		this.person_group_id = person_group_id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -41,6 +50,13 @@ public class User {
 
 	public User(String username, String email, String password) {
 
+		this.username = username;
+		this.email = email;
+		this.setPassword(password);
+	}
+	
+	public User(int id, String username, String email, String password) {
+		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.setPassword(password);

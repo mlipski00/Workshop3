@@ -15,24 +15,26 @@ public class UserDao {
 		Connection conn = DbUtil.getConn();
 		PreparedStatement preparedStatement;
 		if (user.getId() == 0) {
-			String sql = "INSERT INTO Users(username, email, password) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO Users(username, email, password, person_group_id) VALUES (?, ?, ?, ?)";
 			String generatedColumns[] = { "ID" };
 						preparedStatement = conn.prepareStatement(sql, generatedColumns);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getPassword());
+			preparedStatement.setInt(4, user.getPerson_group_id());
 			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
 			if (rs.next()) {
 				user.setId( rs.getInt(1));
 			}
 		} else {
-			String sql = "UPDATE Users SET username=?, email=?, password=? where id = ?";
+			String sql = "UPDATE Users SET username=?, email=?, password=?, person_group_id=? where id = ?";
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getEmail());
-			preparedStatement.setString(3, user.getEmail());
-			preparedStatement.setInt(4, user.getId());
+			preparedStatement.setString(3, user.getPassword());
+			preparedStatement.setInt(4, user.getPerson_group_id());
+			preparedStatement.setInt(5, user.getId());
 			preparedStatement.executeUpdate();
 			
 		}
@@ -73,6 +75,7 @@ public class UserDao {
 			loadedUser.setUsername(resultSet.getString("username"));
 			loadedUser.setPassword(resultSet.getString("password"));
 			loadedUser.setEmail(resultSet.getString("email"));
+			loadedUser.setPerson_group_id(resultSet.getInt("person_group_id"));
 			users.add(loadedUser);
 		}
 		preparedStatement.close();

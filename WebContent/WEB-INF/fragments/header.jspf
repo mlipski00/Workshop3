@@ -1,13 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<P4>Warsztaty 3</P4>
-<br><br>
-<table border="2">
-<tr>
-<td><a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań</a><td>
-<td><a href="/Workshop3/GroupServlet">Lista grup</a><td>
-<td><a href="/Workshop3/UserServlet">Lista użytkowników</a><td>
-<td><a href="/Workshop3/ExcerciseServlet">Lista ćwiczeń</a><td>
-</tr>
+	pageEncoding="UTF-8"%>
+<style>
+h1 {
+	text-align: center;
+	text-transform: uppercase;
+	color: #4CAF50;
+}
+</style>
+<h1>Warsztaty 3 - główny panel administracyjny</h1>
+<br>
+<br>
+<div align="center">
+
+<table border="0">
+	<tr>
+		<td><a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań</a>
+		<td>
+		<td><a href="/Workshop3/GroupServlet">Lista grup</a>
+		<td>
+		<td><a href="/Workshop3/UserServlet">Lista użytkowników</a>
+		<td>
+		<td><a href="/Workshop3/ExcerciseServlet">Lista ćwiczeń</a>
+		<td>
+	</tr>
 </table>
-<br><br>
+</div>
+<br>
+<br>

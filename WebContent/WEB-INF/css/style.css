@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+#mainTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#mainTable td, #mainTable th {
+	text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#mainTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#mainTable tr:hover {background-color: #ddd;}
+
+#mainTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20x;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+div {
+    width: 70%;
+        margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 1px;
+    cursor: pointer;
+}

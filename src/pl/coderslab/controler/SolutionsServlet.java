@@ -46,8 +46,8 @@ public class SolutionsServlet extends HttpServlet {
 		try {
 			solutionsList = SolutionDao.loadAllSolutions(numberSolutionsInteger);
 		} catch (SQLException e) {
-			response.getWriter().append("SQL error");
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			
 		}
 		request.setAttribute("solutionsList", solutionsList);
 		System.out.println(solutionsList);

@@ -7,13 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style><%@include file="../css/style.css"%></style>
 <body>
 <div id="header">
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <body>
-
-	<table border=1>
+<div align="center">
+	<table id="mainTable" border=1>
 		<tr>
 			<th>ID</th>
 			<th>Title</th>
@@ -31,6 +32,7 @@
 		</c:forEach>
 	</table>
 		<br>
+</div>
 <div id="footer">
     <%@ include file="../fragments/footer.jspf" %>
 </div>
