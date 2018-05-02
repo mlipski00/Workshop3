@@ -14,9 +14,25 @@ h1 {
 </head>
 <style><%@include file="/WEB-INF/css/style.css"%></style>
 <body>
-	<div id="header">
+	<div class="topnav" id="myTopnav">
 		<%@ include file="/WEB-INF/fragments/header.jspf"%>
 	</div>
 	<h1>Strona główna</h1>
+	<div  class="index" align="center">
+	<table id="mainTable" border=1 width="400">
+		<tr>
+			<th>Dostępne akcje:</th>
+		</tr>
+		<tr>
+			<td><a href="addUserForm.jsp">Dodanie użytkownika</a></td>
+		</tr>
+		<tr>
+			<td><a href="#">Dodanie ćwiczenia</a></td>
+		</tr>
+		<tr>
+			<td><a href="#">Dodanie grupy użytkowników</a></td>
+		</tr>
+	</table>
+	</div>
 </body>
 </html>

@@ -9,7 +9,7 @@
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
-<div id="header">
+<div class="topnav" id="myTopnav">
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <body>

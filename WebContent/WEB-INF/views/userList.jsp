@@ -9,7 +9,7 @@
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
-<div id="header">
+<div class="topnav" id="myTopnav">
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <body>
@@ -31,7 +31,7 @@
 				<td>${user.email}</td>
 				<td>${user.password}</td>
 				<td>${user.person_group_id}</td>
-				<td><a href="http://localhost:8080/Workshop3/userEditForm.jsp?userID=${user.id}&username=${user.username}&email=${user.email}">Edytuj użytkownika</a></td>
+				<td><a href="/Workshop3/userEditForm.jsp?userID=${user.id}&username=${user.username}&email=${user.email}">Edytuj użytkownika</a></td>
 			</tr>
 		</c:forEach>
 	</table>

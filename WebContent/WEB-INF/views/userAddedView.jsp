@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,27 +8,14 @@
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
-<div class="topnav" id="myTopnav">
+<div align="center">
+<div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<body>
-<div align="center">
-	<table id="mainTable" border=1>
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-		</tr>
-		<c:forEach items="${groupList}" var="group">
-			<tr>
-				<td>${group.id}</td>
-				<td>${group.name}</td>
-			</tr>
-		</c:forEach>
-	</table>
-		<br>
+<p>Użytkownik dodany pomyślnie. ID: ${newID}</p>
 </div>
 <div id="footer">
-    <%@ include file="../fragments/footer.jspf" %>
+    <%@ include file="/WEB-INF/fragments/footer.jspf" %>
 </div>
 </body>
 </html>

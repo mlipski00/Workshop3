@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <style><%@include file="../css/style.css"%></style>
-<div id="header">
+<div class="topnav" id="myTopnav">
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <div align="center">

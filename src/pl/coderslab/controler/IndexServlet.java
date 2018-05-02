@@ -18,16 +18,16 @@ import pl.coderslab.model.User;
 import pl.coderslab.model.UserDao;
 
 /**
- * Servlet implementation class UserServlet
+ * Servlet implementation class IndexServlet
  */
-@WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet("/start")
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public IndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +36,19 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 
-		List<User> userList = new ArrayList<>();
+		List<Group> groupList = new ArrayList<>();
 		try {
-			userList = UserDao.loadAllUsers();
+			groupList = GroupDao.loadAllGroups();
 		} catch (SQLException e) {
 			response.getWriter().append("SQL error");
 			e.printStackTrace();
 		}
-		request.setAttribute("userList", userList);
-		System.out.println(userList);
-		getServletContext().getRequestDispatcher("/WEB-INF/views/userList.jsp").forward(request, response);
+		session.setAttribute("groupList", groupList);
+		System.out.println("grouplist: " + groupList);
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	/**

@@ -10,20 +10,28 @@ h1 {
 <h1>Warsztaty 3 - główny panel administracyjny</h1>
 <br>
 <br>
-<div align="center">
+<div>
 
-<table border="0">
-	<tr>
-		<td><a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań</a>
-		<td>
-		<td><a href="/Workshop3/GroupServlet">Lista grup</a>
-		<td>
-		<td><a href="/Workshop3/UserServlet">Lista użytkowników</a>
-		<td>
-		<td><a href="/Workshop3/ExcerciseServlet">Lista ćwiczeń</a>
-		<td>
-	</tr>
-</table>
+
+		<a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań</a>
+		
+		<a href="/Workshop3/GroupServlet">Lista grup</a>
+		
+		<a href="/Workshop3/UserServlet">Lista użytkowników</a>
+		
+		<a href="/Workshop3/ExcerciseServlet">Lista ćwiczeń</a>
+		
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <br>
 <br>
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>

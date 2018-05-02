@@ -9,7 +9,7 @@
 <style><%@include file="../css/style.css"%></style>
 <body>
 <div align="center">
-<div id="header">
+<div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <p>Użytkownik ID: ${param.id} zaktualizowany pomyślnie</p>
