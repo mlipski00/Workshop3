@@ -14,7 +14,7 @@
 </div>
 <body>
 <div  class="index" align="center">
-<a href="addGroupForm.jsp">Dodaj grupę</a>
+<a href="addGroupForm.jsp">Dodaj grupę</a><br><a href="LogOutServlet">Wyloguj</a>
 </div> <br><br>
 <div align="center">
 	<table id="mainTable" border=1>

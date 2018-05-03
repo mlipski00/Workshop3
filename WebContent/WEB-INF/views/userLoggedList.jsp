@@ -15,7 +15,7 @@
 <body>
 <div align="center">
 <div  class="index" align="center">
-<a href="addUserForm.jsp">Dodaj użytkownika</a>
+<a href="addUserForm.jsp">Dodaj użytkownika</a><br><a href="LogOutServlet">Wyloguj</a>
 </div>
 <br><br>
 		<table id="mainTable" border=1>

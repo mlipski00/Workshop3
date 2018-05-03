@@ -1,10 +1,6 @@
 package pl.coderslab.filters;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,21 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import pl.coderslab.model.Group;
-import pl.coderslab.model.GroupDao;
-
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class LoggedFilter
  */
-@WebFilter(urlPatterns = {"/ExcerciseLoggedServlet", "/GroupLoggedServlet", "/UserLoggedServlet", "/indexLogged.jsp"})
-public class LoginFilter implements Filter {
+@WebFilter("/index.jsp")
+public class LoggedFilter implements Filter {
 
-	/**
-	 * Default constructor.
-	 */
-	public LoginFilter() {
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Default constructor. 
+     */
+    public LoggedFilter() {
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see Filter#destroy()
@@ -43,21 +36,21 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 		HttpSession session = servletRequest.getSession();
 
 		
 		String loginValidation = (String) session.getAttribute("isLogged");
+
 		System.out.println("login valid " + loginValidation);
 		if(loginValidation == null || loginValidation.equals("false")) {
-			servletResponse.sendRedirect("index.jsp");
-		} else if (loginValidation.equals("true")) {
 			chain.doFilter(servletRequest, response);
-		}					
+			
+		} else if (loginValidation.equals("true")) {
+			servletResponse.sendRedirect("indexLogged.jsp");	
+		}
 	}
-
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */

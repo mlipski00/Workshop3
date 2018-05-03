@@ -12,7 +12,7 @@
 <div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<p>Grupa ID: ${param.groupID} została usunięta</p>
+<p>Ćwiczenie ID: ${param.excerciseID} zostało usunięte</p>
 </div>
 <div id="footer">
     <%@ include file="/WEB-INF/fragments/footer.jspf" %>

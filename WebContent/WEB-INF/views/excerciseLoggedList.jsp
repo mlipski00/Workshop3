@@ -14,7 +14,7 @@
 </div>
 <body>
 <div  class="index" align="center">
-<a href="addExcerciseForm.jsp">Dodaj ćwiczenie</a>
+<a href="addExcerciseForm.jsp">Dodaj ćwiczenie</a><br><a href="LogOutServlet">Wyloguj</a>
 </div> <br><br>
 <div align="center">
 	<table id="mainTable" border=1>
