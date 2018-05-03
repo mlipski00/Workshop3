@@ -52,11 +52,12 @@ public class LoginFilter implements Filter {
 		String loginValidation = (String) session.getAttribute("isLogged");
 		//trzeba zamienić
 		System.out.println("login valid " + loginValidation);
-		if(loginValidation.equals("true") ) {
+		if(loginValidation == null ) {
 			//chain.doFilter(servletRequest, response);
-			chain.doFilter(servletRequest, response);
-		} else {
 			servletResponse.sendRedirect("index.jsp");
+		} else if (loginValidation.equals("true")) {
+			
+			chain.doFilter(servletRequest, response);
 		}
 //		if (loginValidation.equals("true")) {
 //			chain.doFilter(servletRequest, response);
