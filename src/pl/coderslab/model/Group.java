@@ -2,6 +2,12 @@ package pl.coderslab.model;
 
 public class Group {
 
+	public Group(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	private int id;
 	private String name;
 

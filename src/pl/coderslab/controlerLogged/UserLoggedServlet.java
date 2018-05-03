@@ -1,29 +1,30 @@
-package pl.coderslab.controler;
+package pl.coderslab.controlerLogged;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserDao;
 
 /**
- * Servlet implementation class UserEditServlet
+ * Servlet implementation class UserLoggedServlet
  */
-@WebServlet("/UserEditServlet")
-public class UserEditServlet extends HttpServlet {
+@WebServlet("/UserLoggedServlet")
+public class UserLoggedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserEditServlet() {
+    public UserLoggedServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +33,17 @@ public class UserEditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		int id = 0;
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		int person_group_id = 0;
+
+		List<User> userList = new ArrayList<>();
 		try {
-			id = Integer.parseInt(request.getParameter("id"));
-			person_group_id = Integer.parseInt(request.getParameter("userGroup"));	
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		User user = new User(id, username, email, password, person_group_id);
-		try {
-			UserDao.saveToDB(user);
+			userList = UserDao.loadAllUsers();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			response.getWriter().append("SQL error");
 			e.printStackTrace();
 		}
-		request.setAttribute("id", id);
-		getServletContext().getRequestDispatcher("/WEB-INF/views/userUpdatedView.jsp").forward(request, response);
-		
+		request.setAttribute("userList", userList);
+		System.out.println(userList);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/userLoggedList.jsp").forward(request, response);
 	}
 
 	/**

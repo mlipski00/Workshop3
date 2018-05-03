@@ -12,7 +12,8 @@
 <div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<p>Użytkownik dodany pomyślnie. ID: ${newID}</p>
+<p>Nowa grupa użytkowników dodana pomyślnie. ID: ${groupID}</p>
+<p>W sekcji <b>Administracja użytkownikami</b> możesz przepisywać użytkowników do nowej grupy</p>
 </div>
 <div id="footer">
     <%@ include file="/WEB-INF/fragments/footer.jspf" %>

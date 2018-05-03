@@ -13,21 +13,11 @@
 <div class="topnav" id="myTopnav">
     <%@ include file="WEB-INF/fragments/header.jspf" %>
 </div>
-	<form action="/Workshop3/UserAddServlet" method="post">
+	<form action="/Workshop3/ExcerciseAddServlet" method="post">
 
-		Podaj nazwę użytkownika: <br><br> <input type="text" name="username" > <br><br>
-		Podaj email: <br><br> <input type="text" name="email"> <br><br>
-		Wprowadz  hasło: <br> <br><input type="text" name="password"> <br><br>
-		Wybierz grupę użytkownika<br><br> <select name="userGroup">
-		
-		
-		<c:forEach items="${sessionScope.groupList}" var="group">
-		
-				<option value="${group.id }" >ID: ${group.id }. Nazwa: ${group.name }</option>
-
-			</c:forEach>
-		</select> <br><br><input type="hidden" name="id" value="${param.userID }" /> <input
-			type="submit">
+		Podaj nazwę ćwiczenia: <br><br> <input type="text" name="excerciseTitle" > <br><br>
+		Podaj treść ćwiczenia: <br><br> <input type="text" name="excerciseDescription"> <br><br>
+ 		<input	type="submit">
 	</form>
 <br>
 </div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Warsztat JEE + MySQL</title>
 </head>
 <style><%@include file="WEB-INF/css/style.css"%></style>
 <body>
@@ -23,8 +23,7 @@
 		
 		<c:forEach items="${sessionScope.groupList}" var="group">
 		
-				<option value="${group.id }" >ID grupy: ${group.id }. Nazwa grupy: ${group.name }</option>
-
+				<option value="${group.id }" >ID: ${group.id }. Nazwa: ${group.name }</option>
 			</c:forEach>
 		</select> <br><br><input type="hidden" name="id" value="${param.userID }" /> <input
 			type="submit">

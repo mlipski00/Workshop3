@@ -13,20 +13,25 @@
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <body>
+<div  class="index" align="center">
+<a href="addExcerciseForm.jsp">Dodaj ćwiczenie</a>
+</div> <br><br>
 <div align="center">
 	<table id="mainTable" border=1>
 		<tr>
 			<th>ID</th>
 			<th>Title</th>
 			<th>Description</th>
-			<th>Lista rozwiązań</th>
+			<th>Edytuj ćwiczenie</th>
+			<th>Usuń ćwiczenie</th>
 		</tr>
 		<c:forEach items="${excerciseList}" var="excercise">
 			<tr>
 				<td>${excercise.id}</td>
 				<td>${excercise.title}</td>
 				<td>${excercise.description}</td>
-				<td><a href="/Workshop3/SolutionsByExcerciseIdServlet?excerciseID=${excercise.id}">Rozwiązania</a></td>
+				<td><a href="/Workshop3/excerciseEditForm.jsp?excerciseID=${excercise.id}">Edytuj</a></td>
+				<td><a href="ExcerciseDeleteServlet?excerciseID=${excercise.id}">Usuń</a></td>
 				
 			</tr>
 		</c:forEach>

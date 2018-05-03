@@ -17,13 +17,22 @@ h1 {
 	<div class="topnav" id="myTopnav">
 		<%@ include file="/WEB-INF/fragments/header.jspf"%>
 	</div>
-	<h1>Zaloguj sie do panelu administracyjnego</h1>
+	<h1>Panel administracyjny</h1>
 	<div  class="index" align="center">
-	<form action="/Workshop3/LoginServlet" metod="post">
-	Podaj login <input type="text" name="login"><br><br>
-	Podaj hasło <input type="text" name="password"><br><br>
-	<input type="submit">
-	</form>
+	<table id="mainTable" border=1 width="400">
+		<tr>
+			<th>Dostępne akcje:</th>
+		</tr>
+		<tr>
+			<td><a href="UserLoggedServlet">Administracja użytkownikami</a></td>
+		</tr>
+		<tr>
+			<td><a href="ExcerciseLoggedServlet">Administracja ćwiczeniami</a></td>
+		</tr>
+		<tr>
+			<td><a href="GroupLoggedServlet">Administracja grupami użytkowników</a></td>
+		</tr>
+	</table>
 	</div>
 </body>
 </html>

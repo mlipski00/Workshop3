@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Warsztat JEE + MySQL</title>
+<title>Warsztat JEE + MySQL</title>e>
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
@@ -12,7 +12,7 @@
 <div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<p>Użytkownik dodany pomyślnie. ID: ${newID}</p>
+<p>Użytkownik ID: ${param.userID} został usunięty</p>
 </div>
 <div id="footer">
     <%@ include file="/WEB-INF/fragments/footer.jspf" %>

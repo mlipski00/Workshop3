@@ -26,15 +26,15 @@ public class ExcerciseDao {
 			if (rs.next()) {
 				excercise.setId(rs.getInt(1));
 			}
+			rs.close();
 		} else {
 			String sql = "UPDATE excercise SET title=?, description=? WHERE ID = ?;";
 			prepStat = conn.prepareStatement(sql);
-			prepStat.setString(2, excercise.getTitle());
-			prepStat.setString(3, excercise.getDescription());
+			prepStat.setString(1, excercise.getTitle());
+			prepStat.setString(2, excercise.getDescription());
 			prepStat.setInt(3, excercise.getId());
 			prepStat.executeUpdate();
 		}
-		rs.close();
 		prepStat.close();
 		conn.close();
 	}

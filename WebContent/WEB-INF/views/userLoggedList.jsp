@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Warsztat JEE + MySQL</title>>
+<title>Warsztat JEE + MySQL</title>
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
@@ -14,20 +14,28 @@
 </div>
 <body>
 <div align="center">
-	<table id="mainTable" border=1>
+<div  class="index" align="center">
+<a href="addUserForm.jsp">Dodaj użytkownika</a>
+</div>
+<br><br>
+		<table id="mainTable" border=1>
 		<tr>
 			<th>ID</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Lista rozwiązań</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Person_group_id</th>
+			<th>Edytuj użytkownika</th>
+			<th>Usuń</th>
+
 		</tr>
-		<c:forEach items="${excerciseList}" var="excercise">
+		<c:forEach items="${userList}" var="user">
 			<tr>
-				<td>${excercise.id}</td>
-				<td>${excercise.title}</td>
-				<td>${excercise.description}</td>
-				<td><a href="/Workshop3/SolutionsByExcerciseIdServlet?excerciseID=${excercise.id}">Rozwiązania</a></td>
-				
+				<td>${user.id}</td>
+				<td>${user.username}</td>
+				<td>${user.email}</td>
+				<td>${user.person_group_id}</td>
+				<td><a href="/Workshop3/userEditForm.jsp?userID=${user.id}&username=${user.username}&email=${user.email}">Edytuj użytkownika</a></td>
+				<td><a href="UserDeleteServlet?userID=${user.id }">Usuń użytkownika</a></td>
 			</tr>
 		</c:forEach>
 	</table>

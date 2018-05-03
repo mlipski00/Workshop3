@@ -13,26 +13,27 @@
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <body>
+<div  class="index" align="center">
+<a href="addGroupForm.jsp">Dodaj grupę</a>
+</div> <br><br>
 <div align="center">
 	<table id="mainTable" border=1>
 		<tr>
 			<th>ID</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Lista rozwiązań</th>
+			<th>Name</th>
+			<th>Edytuj grupę</th>
+			<th>Usuń grupę</th>
 		</tr>
-		<c:forEach items="${excerciseList}" var="excercise">
+		<c:forEach items="${groupList}" var="group">
 			<tr>
-				<td>${excercise.id}</td>
-				<td>${excercise.title}</td>
-				<td>${excercise.description}</td>
-				<td><a href="/Workshop3/SolutionsByExcerciseIdServlet?excerciseID=${excercise.id}">Rozwiązania</a></td>
-				
+				<td>${group.id}</td>
+				<td>${group.name}</td>
+				<td><a href="/Workshop3/groupEditForm.jsp?groupID=${group.id}">Edytuj</a></td>
+				<td><a href="GroupDeleteServlet?groupID=${group.id}">Usuń</a></td>
 			</tr>
 		</c:forEach>
 	</table>
-		<br>
-</div>
+</div><br>
 <div id="footer">
     <%@ include file="../fragments/footer.jspf" %>
 </div>

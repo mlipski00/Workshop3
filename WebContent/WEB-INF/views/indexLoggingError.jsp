@@ -24,6 +24,7 @@ h1 {
 	Podaj hasło <input type="text" name="password"><br><br>
 	<input type="submit">
 	</form>
+	Będne dane.<br>Spróbuj ponownie.
 	</div>
 </body>
 </html>

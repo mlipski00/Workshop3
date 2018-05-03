@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Warsztat JEE + MySQL</title>
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
@@ -19,9 +19,8 @@
 			<th>ID</th>
 			<th>Username</th>
 			<th>Email</th>
-			<th>Password</th>
 			<th>Person_group_id</th>
-			<th>Edytuj użytkownika</th>
+			<th>Rozwiązania zadań</th>
 
 		</tr>
 		<c:forEach items="${userList}" var="user">
@@ -29,9 +28,8 @@
 				<td>${user.id}</td>
 				<td>${user.username}</td>
 				<td>${user.email}</td>
-				<td>${user.password}</td>
 				<td>${user.person_group_id}</td>
-				<td><a href="/Workshop3/userEditForm.jsp?userID=${user.id}&username=${user.username}&email=${user.email}">Edytuj użytkownika</a></td>
+				<td><a href="#">Rozwiązania</a></td>
 			</tr>
 		</c:forEach>
 	</table>

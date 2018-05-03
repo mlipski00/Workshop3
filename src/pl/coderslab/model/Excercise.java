@@ -6,6 +6,18 @@ public class Excercise {
 		this.id = id;
 	}
 
+	public Excercise(int id, String title, String description) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Excercise [id=" + id + ", title=" + title + ", description=" + description + "]";
+	}
+
 	private int id;
 	private String title;
 	private String description;

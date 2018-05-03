@@ -27,9 +27,10 @@ public class GroupDao {
 			rs.close();
 		}
 		else {
-			String sql = "UPDATE user_group SET name = ?;";
+			String sql = "UPDATE user_group SET name = ? WHERE ID = ?;";
 			prepStat = conn.prepareStatement(sql);
 			prepStat.setString(1, group.getName());
+			prepStat.setInt(2, group.getId());
 			prepStat.executeUpdate();
 			}
 		prepStat.close();

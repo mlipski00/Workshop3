@@ -7,19 +7,20 @@ h1 {
 	color: #4CAF50;
 }
 </style>
-<h1>Warsztaty 3 - główny panel administracyjny</h1>
+<h1>Warsztat JEE + MySQL <br> repozytorium danych dot. prowadzenia kursu</h1>
 <br>
 <br>
 <div>
 
 
-		<a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań</a>
-		
-		<a href="/Workshop3/GroupServlet">Lista grup</a>
 		
 		<a href="/Workshop3/UserServlet">Lista użytkowników</a>
 		
+		<a href="/Workshop3/GroupServlet">Lista grup użytkowników</a>
+		
 		<a href="/Workshop3/ExcerciseServlet">Lista ćwiczeń</a>
+		
+		<a href="/Workshop3/SolutionsServlet">Lista ostatnich rozwiązań ćwiczeń</a>
 		
 		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>

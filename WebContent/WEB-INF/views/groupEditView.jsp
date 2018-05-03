@@ -12,7 +12,7 @@
 <div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<p>Użytkownik dodany pomyślnie. ID: ${newID}</p>
+<p>Grupa ID: ${groupID} została zaktualizowana. </p>
 </div>
 <div id="footer">
     <%@ include file="/WEB-INF/fragments/footer.jspf" %>
