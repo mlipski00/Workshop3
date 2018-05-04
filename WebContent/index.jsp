@@ -21,7 +21,7 @@ h1 {
 	<div  class="index" align="center">
 	<form action="/Workshop3/LoginServlet" metod="post">
 	Podaj login <input type="text" name="login"><br><br>
-	Podaj hasło <input type="text" name="password"><br><br>
+	Podaj hasło <input type="password" name="password"><br><br>
 	<input type="submit">
 	</form>
 	</div>

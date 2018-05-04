@@ -17,8 +17,9 @@ h1 {
 	<div class="topnav" id="myTopnav">
 		<%@ include file="/WEB-INF/fragments/header.jspf"%>
 	</div>
-	<h1>Panel administracyjny</h1>
+	<h1>Panel administracyjny </h1>
 	<div  class="index" align="center">
+	<a href="LogOutServlet">Wyloguj</a><br><br>
 	<table id="mainTable" border=1 width="400">
 		<tr>
 			<th>Dostępne akcje:</th>

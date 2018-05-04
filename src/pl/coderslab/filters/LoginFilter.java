@@ -22,7 +22,7 @@ import pl.coderslab.model.GroupDao;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns = {"/ExcerciseLoggedServlet", "/GroupLoggedServlet", "/UserLoggedServlet", "/indexLogged.jsp"})
+@WebFilter(urlPatterns = {"/ExcerciseLoggedServlet", "/GroupLoggedServlet", "/UserLoggedServlet", "/indexLogged.jsp", "/addExcerciseForm.jsp", "/addGroupForm.jsp", "/addUserForm.jsp", "/excerciseEditForm.jsp", "/groupEditForm.jsp", "/userEditForm.jsp"})
 public class LoginFilter implements Filter {
 
 	/**
