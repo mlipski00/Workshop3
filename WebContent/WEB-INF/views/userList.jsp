@@ -29,7 +29,7 @@
 				<td>${user.username}</td>
 				<td>${user.email}</td>
 				<td>${user.person_group_id}</td>
-				<td><a href="#">Rozwiązania</a></td>
+				<td><a href="/Workshop3/SolutionsByUserIdServlet?userID=${user.id}">Rozwiązania</a></td>
 			</tr>
 		</c:forEach>
 	</table>
