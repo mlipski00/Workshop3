@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pl.coderslab.model.Solution;
 import pl.coderslab.model.SolutionDao;
@@ -32,14 +33,15 @@ public class SolutionLoggedServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		List<Solution> solutionList = new ArrayList<>();
 		try {
-			solutionList = SolutionDao.loadAllSolutionsByUserID(Integer.valueOf(request.getParameter("userID")));
+			solutionList = SolutionDao.loadAllSolutionsByUserID((int) session.getAttribute("userID"));
 		} catch (Exception e) {
 			response.getWriter().append(e.getMessage().toString());
 		}
-		request.setAttribute("solutionList", solutionList);
-		getServletContext().getRequestDispatcher("WEB-INF/views/solutionLoggedList.jsp").forward(request, response);
+		request.setAttribute("solutionsList", solutionList);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/solutionsLoggedList.jsp").forward(request, response);
 	}
 
 	/**

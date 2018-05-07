@@ -43,18 +43,16 @@ public class LoginServlet extends HttpServlet {
 
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
+		int userID = 0;
 		boolean validLogin = false, validPassword = false;
 		try {
 			List<User> users = UserDao.loadAllUsers();
 
 			for (User user : users) {
-				if (user.getUsername().equals(login)) {
-					System.out.println(login);
-					System.out.println(user.getUsername());
+				if (user.getEmail().equals(login)) {
 					validLogin = true;
-					System.out.println(user.getPassword());
 					validPassword = BCrypt.checkpw(password, user.getPassword());
-					System.out.println(validPassword);
+					userID = user.getId();
 				}
 			}
 		} catch (Exception e) {
@@ -65,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/WEB-INF/views/indexLoggingError.jsp").forward(request, response);
 		} else if (validLogin == true && validPassword == true) {
 			session.setAttribute("isLogged", "user");
+			session.setAttribute("userID", userID);
 			getServletContext().getRequestDispatcher("/indexUserLogged.jsp").forward(request, response);
 		} else if (login.equals("admin") && password.equals("password")) {
 			session.setAttribute("isLogged", "admin");

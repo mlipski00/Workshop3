@@ -12,7 +12,7 @@
 <div class="topnav" id="myTopnav">>
     <%@ include file="../fragments/header.jspf" %>
 </div>
-<p>Użytkownik ID: ${param.userID} został usunięty</p>
+<p>Rozwiązanie ID: ${solutionID} zostało zaktualizowane. </p>
 </div>
 <div id="footer">
     <%@ include file="/WEB-INF/fragments/footer.jspf" %>

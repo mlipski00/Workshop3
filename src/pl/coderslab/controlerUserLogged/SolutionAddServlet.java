@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import pl.coderslab.model.Solution;
+import pl.coderslab.model.SolutionDao;
 
 /**
  * Servlet implementation class SolutionAddServlet
@@ -26,8 +30,19 @@ public class SolutionAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		int userID = (int)  session.getAttribute("userID");
+		String solutionDescription = request.getParameter("solutionDescription");
+		int excerciseID = Integer.valueOf(request.getParameter("excercise"));
+		Solution solution = new Solution(solutionDescription, excerciseID, userID);
+		try {
+			SolutionDao.saveToDB(solution);
+		} catch (Exception e) {
+		}
+		int solutionID = solution.getId();
+		System.out.println(solution.getId());
+		request.setAttribute("solutionID", solutionID);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/solutionAddedView.jsp").forward(request, response);
 	}
 
 	/**

@@ -13,12 +13,19 @@
 <div class="topnav" id="myTopnav">
     <%@ include file="WEB-INF/fragments/header.jspf" %>
 </div>
-	<form action="/Workshop3/GroupAddServlet" method="get">
+	<form action="/Workshop3/SolutionEditServlet" method="post">
 
-		Podaj opis rozwiązania: <br><br> <input type="text" name="groupName" > <br><br>
-		<input type="hidden" name="groupID" value="${param.userID }" />
- 		<input	type="submit">
-	</form>
+		Edytujesz rozwiązanie ID: ${param.solutionID }<br><br>
+		Podaj nowy opis rozwiązania: <br><br> <input type="text" name="solutionDescription" > <br><br>
+		
+		Wybierz do którego ćwiczenia ma być przypisane rozwiązanie:<br><br>
+			  <select name="excercise">
+			  <c:forEach items="${sessionScope.excerciseList}" var="excercise">
+				<option value="${excercise.id }" >ID: ${excercise.id }. Nazwa: ${excercise.title }</option>
+			</c:forEach>
+			</select><br><br>
+			<input type="hidden" name="solutionID" value="${param.solutionID }" /> <input type="submit">
+		</form>
 <br>
 </div>
 <div id="footer">

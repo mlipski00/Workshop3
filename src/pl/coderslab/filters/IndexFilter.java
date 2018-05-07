@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import pl.coderslab.model.Excercise;
+import pl.coderslab.model.ExcerciseDao;
 import pl.coderslab.model.Group;
 import pl.coderslab.model.GroupDao;
 
@@ -46,8 +48,9 @@ public class IndexFilter implements Filter {
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpSession session = servletRequest.getSession();
 		List<Group> groupList = new ArrayList<>();
+		List<Excercise> excerciseList = new ArrayList<>();
 		try {
-
+			excerciseList = ExcerciseDao.loadAllExcercises();
 			groupList = GroupDao.loadAllGroups();
 		} catch (SQLException e) {
 			response.getWriter().append("SQL error");
@@ -55,6 +58,7 @@ public class IndexFilter implements Filter {
 		}
 		System.out.println("grupy: " + groupList);
 		session.setAttribute("groupList", groupList);
+		session.setAttribute("excerciseList", excerciseList);
 		chain.doFilter(servletRequest, response);
 	}
 

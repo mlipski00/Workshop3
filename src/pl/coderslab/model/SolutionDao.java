@@ -12,7 +12,7 @@ import pl.coderslab.utils.DbUtil;
 
 public class SolutionDao {
 
-	public void saveToDB(Solution solution) throws SQLException {
+	public static void saveToDB(Solution solution) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		PreparedStatement prepStat;
 		ResultSet rs = null;
@@ -31,14 +31,15 @@ public class SolutionDao {
 				solution.setId(rs.getInt(1));
 			}
 		} else {
-			String sql = "UPDATE solution SET updated=?, excercise_id=? WHERE id=?";
+			String sql = "UPDATE solution SET updated=?, description=?, excercise_id=? WHERE id=?";
 			java.util.Date javaDate = new java.util.Date();
 			long javaTime = javaDate.getTime();
 			solution.setUpdated(new Timestamp(javaTime));
 			prepStat = conn.prepareStatement(sql);
 			prepStat.setTimestamp(1, solution.getUpdated());
-			prepStat.setInt(2, solution.getExcercise_id());
-			prepStat.setInt(3, solution.getId());
+			prepStat.setString(2, solution.getDescription());
+			prepStat.setInt(3, solution.getExcercise_id());
+			prepStat.setInt(4, solution.getId());
 			prepStat.executeUpdate();
 		}
 		rs.close();
@@ -161,7 +162,7 @@ public class SolutionDao {
 	}
 	
 	
-	public void delete(Solution solution) throws SQLException {
+	public static void delete(Solution solution) throws SQLException {
 		Connection conn = DbUtil.getConn();
 		if (solution.getId() != 0) {
 			String sql = "DELETE FROM solution WHERE id = ?;";
