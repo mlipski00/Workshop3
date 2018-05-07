@@ -53,7 +53,7 @@ public class LoginFilter implements Filter {
 		System.out.println("login valid " + loginValidation);
 		if(loginValidation == null || loginValidation.equals("false")) {
 			servletResponse.sendRedirect("index.jsp");
-		} else if (loginValidation.equals("true")) {
+		} else if (loginValidation.equals("admin") || loginValidation.equals("user")) {
 			chain.doFilter(servletRequest, response);
 		}					
 	}

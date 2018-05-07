@@ -2,7 +2,6 @@ package pl.coderslab.model;
 
 import java.sql.Timestamp;
 
-
 public class Solution {
 
 	private int id;

@@ -1,3 +1,21 @@
-<div class="footer" align="center">
-<a href="indexLogged.jsp">Powr髏 do indexu</a>
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:choose>
+	<c:when test="${isLogged == 'admin'}">
+	<div class="footer" align="center">
+		<a href="indexLogged.jsp">Powr贸t do panelu administratora</a>
+	</div>
+	</c:when>
+	<c:when test="${isLogged == 'user'}">
+	<div class="footer" align="center">
+		<a href="indexUserLogged.jsp">Powr贸t do panelu u偶ytkownika</a>
+	</div>
+	</c:when>
+	<c:otherwise>
+		<div class="footer" align="center">
+		<a href="index.jsp">Powr贸t do strony g艂贸wnej</a>
+	</div>
+	</c:otherwise>
+</c:choose>

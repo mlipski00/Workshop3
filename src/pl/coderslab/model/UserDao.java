@@ -52,7 +52,7 @@ public class UserDao {
 			User loadedUser = new User();
 			loadedUser.setId(resultSet.getInt("id"));
 			loadedUser.setUsername(resultSet.getString("username"));
-			loadedUser.setPassword(resultSet.getString("password"));
+			loadedUser.setPaswordWithoutHashing(resultSet.getString("password"));
 			loadedUser.setEmail(resultSet.getString("email"));
 			preparedStatement.cancel();
 			return loadedUser;
@@ -73,7 +73,7 @@ public class UserDao {
 			User loadedUser = new User();
 			loadedUser.setId(resultSet.getInt("id"));
 			loadedUser.setUsername(resultSet.getString("username"));
-			loadedUser.setPassword(resultSet.getString("password"));
+			loadedUser.setPaswordWithoutHashing(resultSet.getString("password"));
 			loadedUser.setEmail(resultSet.getString("email"));
 			loadedUser.setPerson_group_id(resultSet.getInt("person_group_id"));
 			users.add(loadedUser);

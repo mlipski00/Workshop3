@@ -32,6 +32,12 @@ public class User {
 		this.person_group_id = person_group_id;
 	}
 
+	public User(int id, String username, String password) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;		
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -43,7 +49,9 @@ public class User {
 	public int getPerson_group_id() {
 		return person_group_id;
 	}
-
+	public void setPaswordWithoutHashing(String password) {
+		this.password = password;
+	}
 	public void setPerson_group_id(int person_group_id) {
 		this.person_group_id = person_group_id;
 	}

@@ -47,8 +47,11 @@ public class LoggedFilter implements Filter {
 		if(loginValidation == null || loginValidation.equals("false")) {
 			chain.doFilter(servletRequest, response);
 			
-		} else if (loginValidation.equals("true")) {
+		} else if (loginValidation.equals("admin")) {
 			servletResponse.sendRedirect("indexLogged.jsp");	
+		}
+		else if (loginValidation.equals("user")) {
+			servletResponse.sendRedirect("indexUserLogged.jsp");	
 		}
 	}
 	/**

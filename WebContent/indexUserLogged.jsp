@@ -7,10 +7,6 @@ h1 {
 	text-transform: uppercase;
 	color: #4CAF50;
 }
-h2 {
-	text-align: center;
-	color: #4CAF50;
-}
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,15 +17,17 @@ h2 {
 	<div class="topnav" id="myTopnav">
 		<%@ include file="/WEB-INF/fragments/header.jspf"%>
 	</div>
-	<h2>Zaloguj sie do panelu użytkownika lub panelu administracyjnego</h2>
+	<h1>Panel użytkownika </h1>
 	<div  class="index" align="center">
-	<form action="/Workshop3/LoginServlet" method="post">
-	Podaj login <input type="text" name="login"><br><br>
-	Podaj hasło <input type="password" name="password"><br><br>
-	<input type="submit">
-	</form>
-	<br>
-	Błędne dane.<br>Spróbuj ponownie.
+	<a href="LogOutServlet">Wyloguj</a><br><br>
+	<table id="mainTable" border=1 width="400">
+		<tr>
+			<th>Dostępne akcje:</th>
+		</tr>
+		<tr>
+			<td><a href="SolutionLoggedServlet">Administracja użytkownikami</a></td>
+		</tr>
+	</table>
 	</div>
 </body>
 </html>

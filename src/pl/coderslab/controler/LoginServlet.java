@@ -1,6 +1,11 @@
 package pl.coderslab.controler;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,43 +13,73 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pl.coderslab.model.User;
+import pl.coderslab.model.UserDao;
+import pl.coderslab.utils.BCrypt;
+
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
-		
+
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		
-		if (login==null || !login.equals("admin") || password==null || !password.equals("password")) {
+		boolean validLogin = false, validPassword = false;
+		try {
+			List<User> users = UserDao.loadAllUsers();
+
+			for (User user : users) {
+				if (user.getUsername().equals(login)) {
+					System.out.println(login);
+					System.out.println(user.getUsername());
+					validLogin = true;
+					System.out.println(user.getPassword());
+					validPassword = BCrypt.checkpw(password, user.getPassword());
+					System.out.println(validPassword);
+				}
+			}
+		} catch (Exception e) {
+			response.getWriter().append(e.getMessage().toString());
+		}
+
+		if (login == null || password == null) {
 			getServletContext().getRequestDispatcher("/WEB-INF/views/indexLoggingError.jsp").forward(request, response);
-		} else {
-			session.setAttribute("isLogged", "true");
+		} else if (validLogin == true && validPassword == true) {
+			session.setAttribute("isLogged", "user");
+			getServletContext().getRequestDispatcher("/indexUserLogged.jsp").forward(request, response);
+		} else if (login.equals("admin") && password.equals("password")) {
+			session.setAttribute("isLogged", "admin");
 			getServletContext().getRequestDispatcher("/indexLogged.jsp").forward(request, response);
+		} else {
+			getServletContext().getRequestDispatcher("/WEB-INF/views/indexLoggingError.jsp").forward(request, response);
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
