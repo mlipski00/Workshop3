@@ -14,7 +14,7 @@
 
 <h1>Panel użytkownika </h1>
 	<div  class="index" align="center">
-	<a href="addSolutionForm.jsp">Dodaj ćwiczenie</a><br><a href="LogOutServlet">Wyloguj</a><br><br>
+	<a href="addSolutionForm.jsp">Dodaj nowe rozwiązanie</a><br><a href="LogOutServlet">Wyloguj</a><br><br>
 	</div>
 <div align="center">
 <body>

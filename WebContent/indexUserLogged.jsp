@@ -19,7 +19,7 @@ h1 {
 	</div>
 	<h1>Panel użytkownika </h1>
 	<div  class="index" align="center">
-	<a href="addSolutionForm.jsp">Dodaj ćwiczenie</a><br><a href="LogOutServlet">Wyloguj</a><br><br>
+	<a href="addSolutionForm.jsp">Dodaj nowe rozwiązanie</a><br><a href="LogOutServlet">Wyloguj</a><br><br>
 	<table id="mainTable" border=1 width="400">
 		<tr>
 			<th>Dostępne akcje:</th>
