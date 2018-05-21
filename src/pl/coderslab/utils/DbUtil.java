@@ -13,8 +13,8 @@ public class DbUtil {
 	private static DataSource ds;
 
 	public static Connection getConn() throws SQLException {
-		//return DriverManager.getConnection("jdbc:mysql://localhost:3306/workshop2?useSSL=false", "", "");
-		
+		//return DriverManager.getConnection("jdbc:mysql://localhost:3306/workshop2?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "", "");
+				
 		return getInstance().getConnection();
 	}
 

@@ -50,7 +50,7 @@ public class GroupDeleteServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("groupID", groupID);
-		getServletContext().getRequestDispatcher("/WEB-INF/views/excerciseDeletedView.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/groupDeletedView.jsp").forward(request, response);
 	}
 
 	/**

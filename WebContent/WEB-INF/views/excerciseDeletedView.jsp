@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Warsztat JEE + MySQL</title>e>
+<title>Warsztat JEE + MySQL</title>
 </head>
 <style><%@include file="../css/style.css"%></style>
 <body>
 <div align="center">
-<div class="topnav" id="myTopnav">>
+<div class="topnav" id="myTopnav">
     <%@ include file="../fragments/header.jspf" %>
 </div>
 <p>Ćwiczenie ID: ${param.excerciseID} zostało usunięte</p>

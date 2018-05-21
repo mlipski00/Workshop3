@@ -15,7 +15,7 @@
 </div>
 	<form action="/Workshop3/GroupAddServlet" method="get">
 
-		Podaj opis rozwiązania: <br><br> <input type="text" name="groupName" > <br><br>
+		Podaj opis grupy: <br><br> <input type="text" name="groupName" > <br><br>
 		<input type="hidden" name="groupID" value="${param.userID }" />
  		<input	type="submit">
 	</form>
